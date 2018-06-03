@@ -27,9 +27,18 @@ PS1=$(whoami)@$(hostname):$(pwd)$
 
 # Install S6Overlay
 RUN apk update && \
-    apk add --no-cache ca-certificates curl && \
+    apk add --no-cache \
+        bash \
+        ca-certificates \
+        coreutils \
+        curl \
+        shadow \
+        tzdata && \
     curl -L -S https://github.com/just-containers/s6-overlay/releases/download/$OVERLAY_VERSION/s6-overlay-$OVERLAY_ARCH.tar.gz | tar xvz -C / && \
     apk del --no-cache curl
+
+# Add files
+ADD /root /
 
 # Entrypoint
 ENTRYPOINT [ "/init" ]
