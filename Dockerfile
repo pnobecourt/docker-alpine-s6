@@ -1,5 +1,5 @@
 # Download base image
-FROM alpine:latest
+FROM alpine:3.7
 
 # Define the ARG variables for creating docker image
 ARG VERSION
@@ -21,6 +21,7 @@ LABEL org.label-schema.name="Alpine base image with s6-overlay" \
 
 # Define the ENV variable for creating docker image
 ENV LANG=C.UTF-8 \
+SHELL=/bin/bash \
 TERM=xterm \
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
 PS1=$(whoami)@$(hostname):$(pwd)$
