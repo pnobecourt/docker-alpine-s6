@@ -1,5 +1,5 @@
 # Download base image
-FROM alpine:3.7
+FROM alpine:3.8
 
 # Define the ARG variables
 ARG VERSION
