@@ -33,10 +33,17 @@ RUN apk update && \
         ca-certificates \
         coreutils \
         curl \
+        grep \
+        less \
+        logrotate \
+        nano \
         shadow \
-        tzdata && \
+        sudo \
+        tzdata \
+        wget \
+        && \
     curl -L -S https://github.com/just-containers/s6-overlay/releases/download/$OVERLAY_VERSION/s6-overlay-$OVERLAY_ARCH.tar.gz | tar xvz -C / && \
-    apk del --no-cache curl
+    rm -rf /var/cache/apk/*
 
 # Add files
 ADD /root /
